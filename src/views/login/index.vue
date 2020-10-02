@@ -1,25 +1,28 @@
 <template>
   <div>
-    <el-button type="danger" @click="login">test</el-button>
+    <el-button type="success">Element UI button 1</el-button>
+    <el-button type="danger" @click="sayHello">{{ buttonText }}</el-button>
   </div>
 </template>
-<script>
-import { login } from "@/api/login";
 
+<script>
 export default {
+  name: "login",
   data() {
     return {
-      username: null,
-      password: null,
+      buttonText: "Element UI button 2",
     };
   },
-  created() {},
+  created() {
+    console.log("This is vue project!");
+  },
   methods: {
-    login() {
-      login(this.username, this.password).then((response) => {
-        console.log(123);
-      });
+    sayHello() {
+      alert("Hello dylanz!");
     },
   },
 };
 </script>
+
+<style>
+</style>
