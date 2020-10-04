@@ -27,8 +27,7 @@ service.interceptors.response.use(
     /**
      * code为非200是抛错 可结合自己业务进行修改
      */
-    const res = response.data
-    console.log('respsonse=' + JSON.stringify(response))
+    const res = response.data;
     if (res.code !== 200) {
       Message({
         message: res.data,
@@ -36,12 +35,11 @@ service.interceptors.response.use(
         duration: 5 * 1000
       })
     } else {
-      console.log('data:' + JSON.stringify(response.data))
-      return response.data
+      return response.data;
     }
   },
   error => {
-    console.log('err' + error)// for debug
+    console.log('err' + error)// for debug    
     Message({
       message: error.message,
       type: 'error',
