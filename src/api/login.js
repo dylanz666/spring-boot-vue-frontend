@@ -1,12 +1,20 @@
 import request from '@/utils/request'
 
 export function login(username, password) {
+    let form = new FormData();
+    form.append("username", username);
+    form.append("password", password);
     return request({
-        url: '/api/login',
+        url: '/login',
         method: 'post',
-        data: {
-            username: username,
-            password: password
-        }
+        data: form
     });
+}
+
+export function ping() {
+    return request({
+        url: '/ping',
+        method: 'get',
+        params: {}
+    })
 }
