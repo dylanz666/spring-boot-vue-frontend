@@ -60,7 +60,7 @@
 </template>
 
 <script>
-import { login, ping } from "@/api/login";
+import { login } from "@/api/login";
 
 export default {
   name: "login",
@@ -105,7 +105,6 @@ export default {
         login(this.ruleForm.username, this.ruleForm.password).then(
           (response) => {
             this.showSuccessNotify(response);
-            this.showFailNotify(response);
             this.ruleForm.username = "";
             this.ruleForm.password = "";
           }
@@ -121,17 +120,7 @@ export default {
           offset: 100,
         });
       }
-    },
-    showFailNotify(response, notifyType, failedMessage) {
-      if ("fail" == response.status || (notifyType && failedMessage)) {
-        this.$notify({
-          title: notifyType ? notifyType : "Error",
-          message: failedMessage ? failedMessage : response.message,
-          type: notifyType ? notifyType : "error",
-          offset: 100,
-        });
-      }
-    },
+    }
   },
 };
 </script>
