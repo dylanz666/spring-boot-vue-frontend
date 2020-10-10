@@ -10,11 +10,14 @@
       >
       </el-option>
     </el-select>
+    <div>
+      <el-button @click="logout">Log Out</el-button>
+    </div>
   </div>
 </template>
 
 <script>
-import { getAuth } from "@/api/auth";
+import { getAuth, logout } from "@/api/auth";
 
 export default {
   name: "home",
@@ -34,7 +37,13 @@ export default {
       }
     });
   },
-  methods: {},
+  methods: {
+    logout() {
+      logout().then((response) => {
+        window.location.href = "/#/login.html";
+      });
+    },
+  },
 };
 </script>
 

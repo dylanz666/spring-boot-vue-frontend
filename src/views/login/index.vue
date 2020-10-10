@@ -100,7 +100,6 @@ export default {
       const from = this.$route.query.from || "home.html";
       this.$refs[formName].validate((valid) => {
         if (!valid) {
-          alert("error sign in!");
           return false;
         }
         login(this.ruleForm.username, this.ruleForm.password).then(
@@ -108,7 +107,9 @@ export default {
             this.showSuccessNotify(response);
             this.ruleForm.username = "";
             this.ruleForm.password = "";
-            this.$router.push({ path: `/${from}` });
+            if (response.code == 200 && response.status == "success") {
+              this.$router.push({ path: `/${from}` });
+            }
           }
         );
       });

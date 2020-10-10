@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import login from '@/views/login/index'
 import home from '@/views/home/index'
+import notFoundPage from '@/views/404'
 
 Vue.use(Router)
 
@@ -21,6 +22,16 @@ export default new Router({
       path: '/home.html',
       name: 'home',
       component: home
+    },
+    {
+      path: '/404',
+      component: notFoundPage,
+      hidden: true
+    },
+    {
+      path: '*',
+      redirect: '/404',
+      hidden: true
     }
   ]
 })
