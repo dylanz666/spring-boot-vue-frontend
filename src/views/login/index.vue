@@ -97,6 +97,7 @@ export default {
   },
   methods: {
     login(formName) {
+      const from = this.$route.query.from || "home.html";
       this.$refs[formName].validate((valid) => {
         if (!valid) {
           alert("error sign in!");
@@ -107,6 +108,7 @@ export default {
             this.showSuccessNotify(response);
             this.ruleForm.username = "";
             this.ruleForm.password = "";
+            this.$router.push({ path: `/${from}` });
           }
         );
       });
@@ -120,7 +122,7 @@ export default {
           offset: 100,
         });
       }
-    }
+    },
   },
 };
 </script>

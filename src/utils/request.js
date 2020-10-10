@@ -34,17 +34,16 @@ service.interceptors.response.use(
         type: 'error',
         duration: 5 * 1000
       })
-    } else {
-      return response.data;
     }
+    return res;
   },
   error => {
-    console.log('err' + error)// for debug    
     Message({
       message: error.message,
       type: 'error',
       duration: 5 * 1000
-    })
+    });
+    window.location.href = "/#/login.html";
     return Promise.reject(error)
   }
 )
