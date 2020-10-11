@@ -3,6 +3,7 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 
 const path = require('path')
+const backendBaseUrl = 'http://127.0.0.1:8080/';
 
 module.exports = {
   dev: {
@@ -12,19 +13,26 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
-        target: 'http://127.0.0.1:8080/',
+        target: backendBaseUrl,
         changeOrigin: true,
         pathRewrite: {
           '^/api': '/api'
         }
       },
       '/login': {
-        target: 'http://127.0.0.1:8080/',
+        target: backendBaseUrl,
         changeOrigin: true,
         pathRewrite: {
           '^/login': '/login'
         }
-      }
+      },
+      '/logout': {
+        target: backendBaseUrl,
+        changeOrigin: true,
+        pathRewrite: {
+          '^/logout': '/logout'
+        }
+      },
     },
 
     // Various Dev Server settings
